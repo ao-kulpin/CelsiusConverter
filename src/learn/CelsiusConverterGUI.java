@@ -32,29 +32,19 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
 
         tempTextField = new javax.swing.JTextField();
         celsiusLabel = new javax.swing.JLabel();
-        convertButton = new javax.swing.JButton();
         fahrenheitLabel = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Celsius Converter");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         tempTextField.setText("999");
         tempTextField.setToolTipText("");
-        tempTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tempTextFieldActionPerformed(evt);
-            }
-        });
-        tempTextField.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tempTextFieldPropertyChange(evt);
-            }
-        });
-        tempTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tempTextFieldKeyTyped(evt);
-            }
-        });
         tempTextField.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
             public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
                 tempTextFieldVetoableChange(evt);
@@ -63,15 +53,11 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
 
         celsiusLabel.setText("Celsius");
 
-        convertButton.setText("Convert");
-        convertButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                convertButtonActionPerformed(evt);
-            }
-        });
-
         fahrenheitLabel.setText("Fahrenheit");
         fahrenheitLabel.setToolTipText("");
+
+        jTextField1.setText("=>");
+        jTextField1.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,14 +65,14 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tempTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(convertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                .addComponent(tempTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(celsiusLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fahrenheitLabel)
-                    .addComponent(celsiusLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fahrenheitLabel)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,12 +80,10 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tempTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(celsiusLabel))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(convertButton)
+                    .addComponent(celsiusLabel)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fahrenheitLabel))
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,21 +114,6 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
         
     }
 
-    private void convertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convertButtonActionPerformed
-        // TODO add your handling code here:
-        //Parse degrees Celsius as a double and convert to Fahrenheit.
-        int tempFahr = (int)((Double.parseDouble(tempTextField.getText()))
-            * 1.8 + 32);
-        fahrenheitLabel.setText(tempFahr + " Fahrenheit");
-    }//GEN-LAST:event_convertButtonActionPerformed
-
-    private void tempTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempTextFieldActionPerformed
-        // TODO add your handling code here:
-//        int tempFahr = (int)((Double.parseDouble(tempTextField.getText()))
-  //          * 1.8 + 32);
-    //    fahrenheitLabel.setText(tempFahr + " Fahrenheit");
-    }//GEN-LAST:event_tempTextFieldActionPerformed
-
     private void tempTextFieldVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_tempTextFieldVetoableChange
         // TODO add your handling code here:
         // TODO add your handling code here:
@@ -153,29 +122,10 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
         fahrenheitLabel.setText(tempFahr + " Fahrenheit");
     }//GEN-LAST:event_tempTextFieldVetoableChange
 
-    private void tempTextFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tempTextFieldPropertyChange
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-//        try {
-  //                      int tempFahr = (int)((Double.parseDouble(tempTextField.getText()))
-    //            * 1.8 + 32);
-      //      fahrenheitLabel.setText(tempFahr + " Fahrenheit");
-//        }
-  //      catch(Exception e) {
-    //        fahrenheitLabel.setText("Error !!!");
-//        }
-    }//GEN-LAST:event_tempTextFieldPropertyChange
-
-    private void tempTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tempTextFieldKeyTyped
-        // TODO add your handling code here:
-//        try {
-  //          int tempFahr = (int)((Double.parseDouble(tempTextField.getText()))
-    //            * 1.8 + 32);
-       //     fahrenheitLabel.setText(tempFahr + " Fahrenheit");
- //       }
-   //     catch(Exception e) {
-     //       fahrenheitLabel.setText("Error !!!");
-       // }
-    }//GEN-LAST:event_tempTextFieldKeyTyped
+        updateFahrenheit();
+    }//GEN-LAST:event_formComponentShown
     /**
      * @param args the command line arguments
      */
@@ -213,8 +163,8 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel celsiusLabel;
-    private javax.swing.JButton convertButton;
     private javax.swing.JLabel fahrenheitLabel;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField tempTextField;
     // End of variables declaration//GEN-END:variables
 }

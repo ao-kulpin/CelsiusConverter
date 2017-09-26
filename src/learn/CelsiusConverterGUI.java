@@ -33,7 +33,7 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
         tempTextField = new javax.swing.JTextField();
         celsiusLabel = new javax.swing.JLabel();
         fahrenheitLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Celsius Converter");
@@ -45,19 +45,14 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
 
         tempTextField.setText("999");
         tempTextField.setToolTipText("");
-        tempTextField.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
-            public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
-                tempTextFieldVetoableChange(evt);
-            }
-        });
 
         celsiusLabel.setText("Celsius");
 
+        fahrenheitLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fahrenheitLabel.setText("Fahrenheit");
         fahrenheitLabel.setToolTipText("");
 
-        jTextField1.setText("=>");
-        jTextField1.setToolTipText("");
+        jLabel1.setText("=>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,24 +61,24 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tempTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(celsiusLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fahrenheitLabel)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addComponent(fahrenheitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tempTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(celsiusLabel)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fahrenheitLabel))
-                .addContainerGap(258, Short.MAX_VALUE))
+                    .addComponent(fahrenheitLabel)
+                    .addComponent(jLabel1)
+                    .addComponent(celsiusLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,14 +108,6 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
         }
         
     }
-
-    private void tempTextFieldVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_tempTextFieldVetoableChange
-        // TODO add your handling code here:
-        // TODO add your handling code here:
-        int tempFahr = (int)((Double.parseDouble(tempTextField.getText()))
-            * 1.8 + 32);
-        fahrenheitLabel.setText(tempFahr + " Fahrenheit");
-    }//GEN-LAST:event_tempTextFieldVetoableChange
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
@@ -164,7 +151,7 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel celsiusLabel;
     private javax.swing.JLabel fahrenheitLabel;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField tempTextField;
     // End of variables declaration//GEN-END:variables
 }
